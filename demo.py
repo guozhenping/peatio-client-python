@@ -7,34 +7,34 @@ client = Client(access_key='your access key', secret_key='your secret key')
 #demo of GET APIs
 
 #get member info
-print client.get(get_api_path('members'))
+print client.get(get_api_path('members'))  #获取 云币我的余额   ok
 
 #get markets
-markets =  client.get(get_api_path('markets'))
+markets =  client.get(get_api_path('markets')) #ok
 print "markets:", markets
 
 #get tickers of each market
 #market should be specified in url
 print 
 print "tickers in markets"
-for market in markets:
+for market in markets:            #获取 云币ETC市场的价格信息     ok
     print client.get(get_api_path('tickers') % market['id'])
 
 #get orders of each market
 #market should be specified in params
 print 
-print "orders in markets"
+print "orders in markets"     #获取 我的etc委托订单   ok
 for market in markets:
-    print client.get(get_api_path('orders'), {'market': market['id']})
-
+    print client.get(get_api_path('orders'), {'market': market['id']})   
+ 
 #get order book
-print client.get(get_api_path('order_book'), params={'market': 'btccny'})
+print client.get(get_api_path('order_book'), params={'market': 'btccny'})   #获取 云币ETC的挂单信息   ok
 
 #get tardes
-print client.get(get_api_path('trades'), params={'market': 'btccny'})
+print client.get(get_api_path('trades'), params={'market': 'btccny'}) #获得 云币ETC市场中最近的撮合订单
 
 #get my trades
-print client.get(get_api_path('my_trades'), params={'market': 'btccny'})
+print client.get(get_api_path('my_trades'), params={'market': 'btccny'})   #获得 我的etc最近的撮合订单  ok
 
 #get k line
 print client.get(get_api_path('k'), params={'market': 'btccny'})
@@ -58,7 +58,7 @@ res = client.post(get_api_path('orders'), params)
 print res
 
 #clear all orders in all markets
-res = client.post(get_api_path('clear'))
+res = client.post(get_api_path('clear'))   #ok  取消订单
 print res
 #delete a specific order by order_id
 
